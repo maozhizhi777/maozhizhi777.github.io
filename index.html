@@ -3,76 +3,172 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>猫吱吱的树洞</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      max-width: 600px;
-      margin: 60px auto;
-      padding: 20px;
-      background: #f7f6f0;
-      color: #394638;
-      font-family: sans-serif;
+      margin: 0;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f5f4eb;
+      color: #425344;
       line-height: 1.8;
     }
-    h1 { text-align: center; }
-    .subtitle {
+
+    header {
       text-align: center;
-      color: #788172;
+      padding: 55px 20px 35px;
+      background: #e5eadb;
     }
+
+    h1 {
+      font-size: 34px;
+      margin: 0;
+    }
+
+    header p {
+      color: #687967;
+    }
+
+    main {
+      max-width: 680px;
+      margin: 30px auto;
+      padding: 0 18px;
+    }
+
     section {
-      background: white;
-      padding: 22px;
-      border-radius: 14px;
-      margin-top: 24px;
+      background: #fffef9;
+      padding: 24px;
+      margin-bottom: 22px;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px #4050400d;
     }
-    textarea, input {
-      box-sizing: border-box;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 5px;
+    }
+
+    input,
+    textarea {
       width: 100%;
       padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
+      border: 1px solid #d8dfd0;
+      border-radius: 10px;
       font: inherit;
+      background: white;
     }
-    textarea { min-height: 100px; }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
     button {
-      background: #71866b;
+      margin-top: 16px;
+      padding: 12px 22px;
+      border: 0;
+      border-radius: 12px;
+      background: #67866b;
       color: white;
-      border: none;
-      padding: 12px 20px;
-      margin-top: 12px;
-      border-radius: 8px;
+      font: inherit;
       cursor: pointer;
     }
-    .note { color: #888; font-size: 13px; }
+
+    button:hover {
+      background: #506e55;
+    }
+
+    .note {
+      font-size: 14px;
+      color: #7a8477;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #788273;
+    }
   </style>
 </head>
+
 <body>
-  <h1>🌿 猫吱吱的树洞</h1>
-  <p class="subtitle">在这里，分享猫吱吱心事，也记录猫吱吱和他的朋友们的生活。</p>
+  <header>
+    <h1>🌿 猫吱吱的树洞</h1>
+    <p>不必假装坚强，想说的话，都可以放进树洞。</p>
+  </header>
 
-  <section>
-    <h2>💌 留言给猫吱吱</h2>
-    <textarea id="message" placeholder="有什么想对猫吱吱说的？"></textarea>
-    <button onclick="sendMessage()">留下心事</button>
-    <p class="note">留言功能还需要连接存储服务，目前不会真正发送或保存。</p>
-  </section>
+  <main>
+    <section>
+      <h2>💌 留下一点心事</h2>
+      <p>欢迎你来到这里。愿你被温柔以待。</p>
 
-  <section>
-    <h2>📖 我的日常</h2>
-    <p>欢迎来到猫吱吱的小小角落。</p>
-    <p>这里会慢慢记录猫吱吱的生活、心情和喜欢的小事。🐈</p>
-  </section>
+      <form id="messageForm">
+        <label for="nickname">你想叫什么昵称？（选填）</label>
+        <input
+          id="nickname"
+          name="nickname"
+          maxlength="40"
+          placeholder="比如：小星星"
+        >
+
+        <label for="message">你最近有什么想分享的？</label>
+        <textarea
+          id="message"
+          name="message"
+          maxlength="5000"
+          required
+          placeholder="开心的事、难过的事，都可以写下来……"
+        ></textarea>
+
+       
+<a
+  href="https://docs.google.com/forms/d/e/1FAIpQLSdGskRCQuzY66eZEfVOS0fySk5_WPD5lbPJxHxdDS2CgYor9Q/viewform?usp=publish-editor"
+  target="_blank"
+  rel="noopener noreferrer"
+  style="display:inline-block; margin-top:16px; padding:12px 22px; border-radius:12px; background:#67866b; color:white; text-decoration:none;"
+>
+  把心事放进树洞 🌱
+</a>
+      </form>
+
+      <p class="note">
+        提交后，留言只有猫吱吱可以查看，不会展示给其他访客。
+      </p>
+
+      <p id="status" role="status"></p>
+    </section>
+
+    <section>
+      <h2>🐈 猫吱吱的小角落</h2>
+      <p>
+        这里可以慢慢记录猫吱吱的日常、喜欢的事，以及生活里的小小发现。
+      </p>
+      <p class="note">
+        猫吱吱也可以在这里写下属于自己的故事。
+      </p>
+    </section>
+  </main>
+
+  <footer>愿每一颗心，都有地方安放。💚</footer>
 
   <script>
-    function sendMessage() {
-      const message = document.getElementById("message").value.trim();
-      if (!message) {
-        alert("先写一点想说的话吧！");
-        return;
-      }
-      alert("谢谢你来到猫吱吱的树洞！留言保存功能还在准备中。");
-    }
+    const form = document.getElementById("messageForm");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      document.getElementById("status").textContent =
+        "🌿 这份心事还没有发送成功，请稍后再试。";
+    });
   </script>
 </body>
 </html>
