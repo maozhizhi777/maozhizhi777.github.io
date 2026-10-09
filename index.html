@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>猫吱吱的树洞</title>
+  <style>
+    body {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 20px;
+      background: #f7f6f0;
+      color: #394638;
+      font-family: sans-serif;
+      line-height: 1.8;
+    }
+    h1 { text-align: center; }
+    .subtitle {
+      text-align: center;
+      color: #788172;
+    }
+    section {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      margin-top: 24px;
+    }
+    textarea, input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font: inherit;
+    }
+    textarea { min-height: 100px; }
+    button {
+      background: #71866b;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .note { color: #888; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>🌿 猫吱吱的树洞</h1>
+  <p class="subtitle">在这里，分享猫吱吱心事，也记录猫吱吱和他的朋友们的生活。</p>
+
+  <section>
+    <h2>💌 留言给猫吱吱</h2>
+    <textarea id="message" placeholder="有什么想对猫吱吱说的？"></textarea>
+    <button onclick="sendMessage()">留下心事</button>
+    <p class="note">留言功能还需要连接存储服务，目前不会真正发送或保存。</p>
+  </section>
+
+  <section>
+    <h2>📖 我的日常</h2>
+    <p>欢迎来到猫吱吱的小小角落。</p>
+    <p>这里会慢慢记录猫吱吱的生活、心情和喜欢的小事。🐈</p>
+  </section>
+
+  <script>
+    function sendMessage() {
+      const message = document.getElementById("message").value.trim();
+      if (!message) {
+        alert("先写一点想说的话吧！");
+        return;
+      }
+      alert("谢谢你来到猫吱吱的树洞！留言保存功能还在准备中。");
+    }
+  </script>
+</body>
+</html>
